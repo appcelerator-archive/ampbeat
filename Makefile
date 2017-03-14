@@ -27,8 +27,13 @@ copy-vendor:
 .PHONY: create-image
 create-image:
 	rm -f ampbeat
-	docker build -t appcelerator/ampbeat .
+	docker build -t appcelerator/ampbeat:latest .
 
+.PHONY: create-image-test
+create-image-test:
+		rm -f ampbeat
+		docker build -t appcelerator/ampbeat:test .
+		
 .PHONY: update-deps
 update-deps:
 

@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"os"
+	"path"
 	"strings"
 	"time"
 
@@ -39,11 +41,13 @@ type ContainerData struct {
 	metricsReadError bool
 	previousIOStats  *IOStats
 	previousNetStats *NetStats
+	lastDateSaveTime time.Time
 }
 
 //AgentStart Connect to docker engine, get initial containers list and start the agent
 func (a *Ampbeat) start(config *config.Config) error {
 	// Connection to Docker
+	os.MkdirAll(containersDateDir, 0666)
 	defaultHeaders := map[string]string{"User-Agent": "Ampbeat"}
 	cli, err := client.NewClient(config.DockerURL, dockerAPIVersion, nil, defaultHeaders)
 	if err != nil {
@@ -183,6 +187,7 @@ func (a *Ampbeat) removeContainer(ID string) {
 		fmt.Println("remove container", data.name)
 		delete(a.containers, ID)
 	}
+	os.Remove(path.Join(containersDateDir, ID))
 }
 
 //Update container status and health

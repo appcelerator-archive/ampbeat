@@ -28,6 +28,10 @@ ampbeat:
   io: true
   cpu: true
 
+  # period of time in second the logs position is saved
+  logs_position_save_period: 10
+
+
 #================================ General =====================================
 
 # The name of the shipper that publishes the network data. It can be used to group

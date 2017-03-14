@@ -5,12 +5,16 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"io/ioutil"
+	"path"
 	"strings"
 	"time"
 
 	"github.com/docker/docker/api/types"
 	"github.com/elastic/beats/libbeat/common"
 )
+
+const containersDateDir = "/containers"
 
 // verify all containers to open logs stream if not already done
 func (a *Ampbeat) updateLogsStream() {
@@ -49,14 +53,18 @@ func (a *Ampbeat) openLogsStream(ID string, lastTimeID string) (io.ReadCloser, e
 
 // get last timestamp if exist
 func (a *Ampbeat) getLastTimeID(ID string) string {
-	//to do
-	return ""
+	data, err := ioutil.ReadFile(path.Join(containersDateDir, ID))
+	if err != nil {
+		return ""
+	}
+	return string(data)
 }
 
 // stream reading loop
 func (a *Ampbeat) startReadingLogs(ID string, data *ContainerData) {
 	stream := data.logsStream
 	reader := bufio.NewReader(stream)
+	data.lastDateSaveTime = time.Now()
 	fmt.Printf("start reading logs on container: %s\n", data.name)
 	for {
 		line, err := reader.ReadString('\n')
@@ -67,14 +75,14 @@ func (a *Ampbeat) startReadingLogs(ID string, data *ContainerData) {
 			a.removeContainer(ID)
 			return
 		}
-		var slog string
 		if len(line) <= 39 {
 			//fmt.Printf("invalid log: [%s]\n", line)
 			continue
 		}
 
-		slog = strings.TrimSuffix(line[39:], "\n")
-		timestamp, err := time.Parse("2006-01-02T15:04:05.000000000Z", line[8:38])
+		date := line[8:38]
+		slog := strings.TrimSuffix(line[39:], "\n")
+		timestamp, err := time.Parse("2006-01-02T15:04:05.000000000Z", date)
 		if err != nil {
 			timestamp = time.Now()
 		}
@@ -94,6 +102,15 @@ func (a *Ampbeat) startReadingLogs(ID string, data *ContainerData) {
 			"message":         slog,
 		}
 		a.client.PublishEvent(event)
+		a.periodicDateSave(data, date)
+	}
+}
+
+func (a *Ampbeat) periodicDateSave(data *ContainerData, date string) {
+	now := time.Now()
+	if now.Sub(data.lastDateSaveTime).Seconds() >= float64(a.logsSavedDatePeriod) {
+		ioutil.WriteFile(path.Join(containersDateDir, data.ID), []byte(date), 0666)
+		data.lastDateSaveTime = now
 	}
 }
 

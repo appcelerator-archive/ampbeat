@@ -15,13 +15,14 @@ import (
 
 // Ampbeat the amp beat struct
 type Ampbeat struct {
-	done               chan struct{}
-	config             config.Config
-	client             publisher.Client
-	dockerClient       *client.Client
-	eventStreamReading bool
-	containers         map[string]*ContainerData
-	lastUpdate         time.Time
+	done                chan struct{}
+	config              config.Config
+	client              publisher.Client
+	dockerClient        *client.Client
+	eventStreamReading  bool
+	containers          map[string]*ContainerData
+	lastUpdate          time.Time
+	logsSavedDatePeriod int
 }
 
 // New Creates beater
