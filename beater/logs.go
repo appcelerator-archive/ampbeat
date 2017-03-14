@@ -89,7 +89,7 @@ func (a *Ampbeat) startReadingLogs(ID string, data *ContainerData) {
 
 		event := common.MapStr{
 			"@timestamp":      common.Time(timestamp),
-			"type":            "amp-logs",
+			"type":            "logs",
 			"container_id":    ID,
 			"container_name":  data.name,
 			"container_state": data.state,
