@@ -1,23 +1,34 @@
 # Ampbeat
 
-Welcome to Ampbeat v0.0.1
-
-This beat handle both docker logs and metrics in a Swarm cluster context adding meta data as stack, service name to logs/metrics.
-It listen Docker containers events and for each new started container open logs and metrics streams to publish the events.
-
-It publishes, memory, net, io, cpu metrics and all logs.
-
+Welcome to Ampbeat.
 
 Ensure that this folder is at the following location:
-`${GOPATH}/src/github.com/appcelerator/ampbeat`
+`${GOPATH}/github.com/appcelerator/ampbeat`
 
 ## Getting Started with Ampbeat
 
 ### Requirements
 
-* [Golang](https://golang.org/dl/) 1.7 min
+* [Golang](https://golang.org/dl/) 1.7
 
+### Init Project
+To get running with Ampbeat and also install the
+dependencies, run the following command:
 
+```
+make setup
+```
+
+It will create a clean git history for each major step. Note that you can always rewrite the history if you wish before pushing your changes.
+
+To push Ampbeat in the git repository, run the following commands:
+
+```
+git remote set-url origin https://github.com/appcelerator/ampbeat
+git push origin master
+```
+
+For further development, check out the [beat developer guide](https://www.elastic.co/guide/en/beats/libbeat/current/new-beat.html).
 
 ### Build
 
@@ -25,33 +36,17 @@ To build the binary for Ampbeat run the command below. This will generate a bina
 in the same directory with the name ampbeat.
 
 ```
-git clone git@github.com:appcelerator/ampbeat
-cd ampbeat
-make create-image
-```
-or directly use the docker hub image, pulling it:
-
-```
-docker pull appcelerator/ampbeat:0.0.1
-(or tag latest)
+make
 ```
 
-ampbeat settings can be updated in the file ampbeat-confimage.yml, before creating the image
 
 ### Run
 
-To run Ampbeat in a docker swarm context:
+To run Ampbeat with debugging output enabled, run:
 
 ```
-docker service create --with-registry-auth --network aNetwork --name ampbeat \
-    --label io.amp.role="infrastructure" \
-    --mode global \
-    --mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock \
-    appcelerator/ampbeat
+./ampbeat -c ampbeat.yml -e -d "*"
 ```
-
-Where the network "aNetwork" is the same than Elasticsearch or Logstash one
-
 
 
 ### Test
@@ -65,6 +60,7 @@ make testsuite
 alternatively:
 ```
 make unit-tests
+make system-tests
 make integration-tests
 make coverage-report
 ```
@@ -88,6 +84,7 @@ To clean  Ampbeat source code, run the following commands:
 
 ```
 make fmt
+make simplify
 ```
 
 To clean up the build directory and generated artifacts, run:
@@ -95,6 +92,21 @@ To clean up the build directory and generated artifacts, run:
 ```
 make clean
 ```
+
+
+### Clone
+
+To clone Ampbeat from the git repository, run the following commands:
+
+```
+mkdir -p ${GOPATH}/github.com/appcelerator/ampbeat
+cd ${GOPATH}/github.com/appcelerator/ampbeat
+git clone https://github.com/appcelerator/ampbeat
+```
+
+
+For further development, check out the [beat developer guide](https://www.elastic.co/guide/en/beats/libbeat/current/new-beat.html).
+
 
 ## Packaging
 

@@ -3,30 +3,8 @@
 ############################# Ampbeat ######################################
 
 ampbeat:
-  # Defines how often the stat is sent to the output
-  period: ${PERIOD:3s}
-
-  # Defines the docker url
-  docker_url: ${DOCKER_SOCKET:unix:///var/run/docker.sock}
-
-  # TLS switch
-  tls: ${DOCKER_ENABLE_TLS:false}
-
-  # Path to the ca file
-  ca_path: ${DOCKER_CA_PATH:}
-
-  # Path to the cert file
-  cert_path: ${DOCKER_CERT_PATH:}
-
-  # Path to the key file
-  key_path: ${DOCKER_KEY_PATH:}
-
-  # event types enqabled or not
-  logs: true
-  net: true
-  memory: true
-  io: true
-  cpu: true
+  # Defines how often an event is sent to the output
+  period: 1s
 
 #================================ General ======================================
 
@@ -133,7 +111,7 @@ output.elasticsearch:
 
   # Optional index name. The default is "ampbeat" plus date
   # and generates [ampbeat-]YYYY.MM.DD keys.
-  #index: "ampbeat-%{[beat.version]}-%{+yyyy.MM.dd}"
+  #index: "ampbeat-%{+yyyy.MM.dd}"
 
   # Optional ingest node pipeline. By default no pipeline will be used.
   #pipeline: ""
@@ -173,8 +151,6 @@ output.elasticsearch:
   #template.enabled: true
 
   # Template name. By default the template name is ampbeat.
-  # The version of the beat will always be appended to the given name
-  # so the final name is ampbeat-%{[beat.version]}.
   #template.name: "ampbeat"
 
   # Path to template file
