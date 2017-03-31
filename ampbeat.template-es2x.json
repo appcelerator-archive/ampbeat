@@ -45,11 +45,35 @@
             }
           }
         },
-        "counter": {
-          "type": "long"
+        "container_id": {
+          "ignore_above": 1024,
+          "index": "not_analyzed",
+          "type": "string"
+        },
+        "container_name": {
+          "ignore_above": 1024,
+          "index": "not_analyzed",
+          "type": "string"
+        },
+        "container_short_name": {
+          "ignore_above": 1024,
+          "index": "not_analyzed",
+          "type": "string"
+        },
+        "container_state": {
+          "ignore_above": 1024,
+          "index": "not_analyzed",
+          "type": "string"
         },
         "fields": {
           "properties": {}
+        },
+        "message": {
+          "index": "analyzed",
+          "norms": {
+            "enabled": false
+          },
+          "type": "string"
         },
         "meta": {
           "properties": {
@@ -89,7 +113,37 @@
             }
           }
         },
+        "node_id": {
+          "ignore_above": 1024,
+          "index": "not_analyzed",
+          "type": "string"
+        },
+        "role": {
+          "ignore_above": 1024,
+          "index": "not_analyzed",
+          "type": "string"
+        },
+        "service_id": {
+          "ignore_above": 1024,
+          "index": "not_analyzed",
+          "type": "string"
+        },
+        "service_name": {
+          "ignore_above": 1024,
+          "index": "not_analyzed",
+          "type": "string"
+        },
+        "stack_name": {
+          "ignore_above": 1024,
+          "index": "not_analyzed",
+          "type": "string"
+        },
         "tags": {
+          "ignore_above": 1024,
+          "index": "not_analyzed",
+          "type": "string"
+        },
+        "task_id": {
           "ignore_above": 1024,
           "index": "not_analyzed",
           "type": "string"

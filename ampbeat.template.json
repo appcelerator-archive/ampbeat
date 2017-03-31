@@ -39,11 +39,28 @@
             }
           }
         },
-        "counter": {
-          "type": "long"
+        "container_id": {
+          "ignore_above": 1024,
+          "type": "keyword"
+        },
+        "container_name": {
+          "ignore_above": 1024,
+          "type": "keyword"
+        },
+        "container_short_name": {
+          "ignore_above": 1024,
+          "type": "keyword"
+        },
+        "container_state": {
+          "ignore_above": 1024,
+          "type": "keyword"
         },
         "fields": {
           "properties": {}
+        },
+        "message": {
+          "norms": false,
+          "type": "text"
         },
         "meta": {
           "properties": {
@@ -77,7 +94,31 @@
             }
           }
         },
+        "node_id": {
+          "ignore_above": 1024,
+          "type": "keyword"
+        },
+        "role": {
+          "ignore_above": 1024,
+          "type": "keyword"
+        },
+        "service_id": {
+          "ignore_above": 1024,
+          "type": "keyword"
+        },
+        "service_name": {
+          "ignore_above": 1024,
+          "type": "keyword"
+        },
+        "stack_name": {
+          "ignore_above": 1024,
+          "type": "keyword"
+        },
         "tags": {
+          "ignore_above": 1024,
+          "type": "keyword"
+        },
+        "task_id": {
           "ignore_above": 1024,
           "type": "keyword"
         }

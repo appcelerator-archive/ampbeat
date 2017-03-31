@@ -12,27 +12,11 @@ This file is generated! See _meta/fields.yml and scripts/generate_field_docs.py
 This document describes the fields that are exported by Ampbeat. They are
 grouped in the following categories:
 
-* <<exported-fields-ampbeat>>
 * <<exported-fields-beat>>
 * <<exported-fields-cloud>>
+* <<exported-fields-logs>>
 
 --
-[[exported-fields-ampbeat]]
-== ampbeat Fields
-
-None
-
-
-[float]
-=== counter
-
-type: long
-
-required: True
-
-PLEASE UPDATE DOCUMENTATION
-
-
 [[exported-fields-beat]]
 == Beat Fields
 
@@ -135,5 +119,100 @@ Name of the project in Google Cloud.
 === meta.cloud.region
 
 Region in which this host is running.
+
+
+[[exported-fields-logs]]
+== logs Fields
+
+Docker containers logs.
+
+
+
+[float]
+=== container_id
+
+type: keyword
+
+The container id.
+
+
+[float]
+=== container_name
+
+type: keyword
+
+The container name
+
+
+[float]
+=== container_short_name
+
+type: keyword
+
+The container short name
+
+
+[float]
+=== container_state
+
+type: keyword
+
+The container state
+
+
+[float]
+=== service_name
+
+type: keyword
+
+The service name
+
+
+[float]
+=== service_id
+
+type: keyword
+
+The service id
+
+
+[float]
+=== task_id
+
+type: keyword
+
+The task id
+
+
+[float]
+=== stack_name
+
+type: keyword
+
+The stack name
+
+
+[float]
+=== node_id
+
+type: keyword
+
+The node id
+
+
+[float]
+=== role
+
+type: keyword
+
+The amp role
+
+
+[float]
+=== message
+
+type: text
+
+The log message
 
 
