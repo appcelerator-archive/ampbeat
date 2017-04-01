@@ -64,7 +64,7 @@
         "limit": {
           "type": "long"
         },
-        "maxusage": {
+        "maxUsage": {
           "type": "long"
         },
         "message": {

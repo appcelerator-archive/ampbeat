@@ -54,10 +54,10 @@
       description: >
         The log message
 
-- key: metrics
-  title: metrics
+- key: cpu
+  title: cpu metrics
   description: >
-    Docker container metrics
+    Gather cpu consumption of the current container.
   fields:
     - name: "totalUsage"
       type: double
@@ -72,6 +72,12 @@
       type: double
       description: >
         Same as *totalUsage*, but only the User mode consumptions.
+
+- key: io
+  title: io metrics
+  description: >
+    Gather disk usage of the current container.
+  fields:
     - name: "read"
       type: long
       description: >
@@ -84,15 +90,21 @@
       type: long
       description: >
         It represents amount of bytes read and written by the container on disk(s) during the period.
+
+- key: mem
+  title: memory metrics
+  description: >
+    Docker mem metrics
+  fields:
     - name: "failcnt"
       type: long
       description: >
-        Limit of memory (max memory available) in KBytes.
+        TODO
     - name: "limit"
       type: long
       description: >
         Limit of memory (max memory available) in KBytes.
-    - name: "maxusage"
+    - name: "maxUsage"
       type: long
       description: >
         Maximum memory used by the container in KBytes.
@@ -104,6 +116,12 @@
       type: double
       description: >
         Amount of memory used by the container in percents between 0.0 and 1.0.
+
+- key: net
+  title: network metrics
+  description: >
+    Gather container metrics about network (rx/tx)
+  fields:
     - name: "totalBytes"
       type: long
       description: >
