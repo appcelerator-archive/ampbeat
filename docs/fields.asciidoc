@@ -15,6 +15,7 @@ grouped in the following categories:
 * <<exported-fields-beat>>
 * <<exported-fields-cloud>>
 * <<exported-fields-logs>>
+* <<exported-fields-metrics>>
 
 --
 [[exported-fields-beat]]
@@ -124,7 +125,7 @@ Region in which this host is running.
 [[exported-fields-logs]]
 == logs Fields
 
-Docker containers logs.
+Docker containers logs
 
 
 
@@ -133,7 +134,7 @@ Docker containers logs.
 
 type: keyword
 
-The container id.
+The container id
 
 
 [float]
@@ -214,5 +215,252 @@ The amp role
 type: text
 
 The log message
+
+
+[[exported-fields-metrics]]
+== metrics Fields
+
+Docker container metrics
+
+
+
+[float]
+=== container_id
+
+type: keyword
+
+The container id
+
+
+[float]
+=== container_name
+
+type: keyword
+
+The container name
+
+
+[float]
+=== container_short_name
+
+type: keyword
+
+The container short name
+
+
+[float]
+=== container_state
+
+type: keyword
+
+The container state
+
+
+[float]
+=== service_name
+
+type: keyword
+
+The service name
+
+
+[float]
+=== service_id
+
+type: keyword
+
+The service id
+
+
+[float]
+=== task_id
+
+type: keyword
+
+The task id
+
+
+[float]
+=== stack_name
+
+type: keyword
+
+The stack name
+
+
+[float]
+=== node_id
+
+type: keyword
+
+The node id
+
+
+[float]
+=== role
+
+type: keyword
+
+The amp role
+
+
+[float]
+=== totalUsage
+
+type: double
+
+Total cpu consumption in percent. This value can be greater than 100%, depending on the number of available CPUs.
+
+
+[float]
+=== usageInKernelmode
+
+type: double
+
+Same as *totalUsage*, but only the Kernel mode consumptions.
+
+
+[float]
+=== usageInUsermode
+
+type: double
+
+Same as *totalUsage*, but only the User mode consumptions.
+
+
+[float]
+=== read
+
+type: long
+
+It represents amount of bytes read by the container on disk(s) during the period.
+
+
+[float]
+=== write
+
+type: long
+
+It represents amount of bytes written by the container on disk(s) during the period.
+
+
+[float]
+=== total
+
+type: long
+
+It represents amount of bytes read and written by the container on disk(s) during the period.
+
+
+[float]
+=== failcnt
+
+type: long
+
+Limit of memory (max memory available) in KBytes.
+
+
+[float]
+=== limit
+
+type: long
+
+Limit of memory (max memory available) in KBytes.
+
+
+[float]
+=== maxusage
+
+type: long
+
+Maximum memory used by the container in KBytes.
+
+
+[float]
+=== usage
+
+type: long
+
+Current memory consumption in KBytes.
+
+
+[float]
+=== usage_p
+
+type: double
+
+Amount of memory used by the container in percents between 0.0 and 1.0.
+
+
+[float]
+=== totalBytes
+
+type: long
+
+Total number of bytes received and transmitted since the last event.
+
+
+[float]
+=== rxBytes
+
+type: long
+
+Number number of bytes received since the last event.
+
+
+[float]
+=== rxDropped
+
+type: long
+
+Number received dropped packets since the last event.
+
+
+[float]
+=== rxErrors
+
+type: long
+
+Number number of errors received since the last event.
+
+
+[float]
+=== rxPackets
+
+type: long
+
+Number number of packets received since the last event.
+
+
+[float]
+=== txBytes
+
+type: long
+
+Number number of bytes transmitted since the last event.
+
+
+[float]
+=== txDropped
+
+type: long
+
+Number transmitted dropped packets since the last event.
+
+
+[float]
+=== txErrors
+
+type: long
+
+Number number of errors transmitted since the last event.
+
+
+[float]
+=== txPackets
+
+type: long
+
+Number of packets transmitted since the last event.
 
 
