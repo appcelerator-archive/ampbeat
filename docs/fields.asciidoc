@@ -14,6 +14,7 @@ grouped in the following categories:
 
 * <<exported-fields-beat>>
 * <<exported-fields-cloud>>
+* <<exported-fields-common>>
 * <<exported-fields-logs>>
 * <<exported-fields-metrics>>
 
@@ -122,10 +123,10 @@ Name of the project in Google Cloud.
 Region in which this host is running.
 
 
-[[exported-fields-logs]]
-== logs Fields
+[[exported-fields-common]]
+== common Fields
 
-Docker containers logs
+AMP events metadata
 
 
 
@@ -206,7 +207,14 @@ The node id
 
 type: keyword
 
-The amp role
+The AMP role
+
+
+[[exported-fields-logs]]
+== logs Fields
+
+Docker container metrics
+
 
 
 [float]
@@ -222,86 +230,6 @@ The log message
 
 Docker container metrics
 
-
-
-[float]
-=== container_id
-
-type: keyword
-
-The container id
-
-
-[float]
-=== container_name
-
-type: keyword
-
-The container name
-
-
-[float]
-=== container_short_name
-
-type: keyword
-
-The container short name
-
-
-[float]
-=== container_state
-
-type: keyword
-
-The container state
-
-
-[float]
-=== service_name
-
-type: keyword
-
-The service name
-
-
-[float]
-=== service_id
-
-type: keyword
-
-The service id
-
-
-[float]
-=== task_id
-
-type: keyword
-
-The task id
-
-
-[float]
-=== stack_name
-
-type: keyword
-
-The stack name
-
-
-[float]
-=== node_id
-
-type: keyword
-
-The node id
-
-
-[float]
-=== role
-
-type: keyword
-
-The amp role
 
 
 [float]
