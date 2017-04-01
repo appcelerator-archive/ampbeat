@@ -47,7 +47,7 @@
 - key: logs
   title: logs
   description: >
-    Docker container metrics
+    Docker container logs
   fields:
     - name: "message"
       type: text
