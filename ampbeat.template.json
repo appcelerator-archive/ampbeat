@@ -1,8 +1,11 @@
 {
   "mappings": {
     "_default_": {
+      "_all": {
+        "norms": false
+      },
       "_meta": {
-        "version": "6.0.0-alpha1"
+        "version": "5.3.1"
       },
       "date_detection": false,
       "dynamic_templates": [
@@ -48,7 +51,11 @@
           "ignore_above": 1024,
           "type": "keyword"
         },
-        "failcnt": {
+        "container_state": {
+          "ignore_above": 1024,
+          "type": "keyword"
+        },
+        "fail_count": {
           "type": "long"
         },
         "fields": {
@@ -57,12 +64,8 @@
         "limit": {
           "type": "long"
         },
-        "maxUsage": {
+        "max_usage": {
           "type": "long"
-        },
-        "message": {
-          "norms": false,
-          "type": "text"
         },
         "meta": {
           "properties": {
@@ -96,85 +99,13 @@
             }
           }
         },
+        "msg": {
+          "norms": false,
+          "type": "text"
+        },
         "node_id": {
           "ignore_above": 1024,
           "type": "keyword"
-        },
-        "percpuUsage": {
-          "properties": {
-            "cpu0": {
-              "type": "double"
-            },
-            "cpu1": {
-              "type": "double"
-            },
-            "cpu10": {
-              "type": "double"
-            },
-            "cpu11": {
-              "type": "double"
-            },
-            "cpu12": {
-              "type": "double"
-            },
-            "cpu13": {
-              "type": "double"
-            },
-            "cpu14": {
-              "type": "double"
-            },
-            "cpu15": {
-              "type": "double"
-            },
-            "cpu16": {
-              "type": "double"
-            },
-            "cpu17": {
-              "type": "double"
-            },
-            "cpu18": {
-              "type": "double"
-            },
-            "cpu19": {
-              "type": "double"
-            },
-            "cpu2": {
-              "type": "double"
-            },
-            "cpu20": {
-              "type": "double"
-            },
-            "cpu21": {
-              "type": "double"
-            },
-            "cpu22": {
-              "type": "double"
-            },
-            "cpu23": {
-              "type": "double"
-            },
-            "cpu3": {
-              "type": "double"
-            },
-            "cpu4": {
-              "type": "double"
-            },
-            "cpu5": {
-              "type": "double"
-            },
-            "cpu6": {
-              "type": "double"
-            },
-            "cpu7": {
-              "type": "double"
-            },
-            "cpu8": {
-              "type": "double"
-            },
-            "cpu9": {
-              "type": "double"
-            }
-          }
         },
         "read": {
           "type": "long"
@@ -183,16 +114,16 @@
           "ignore_above": 1024,
           "type": "keyword"
         },
-        "rxBytes": {
+        "rx_bytes": {
           "type": "long"
         },
-        "rxDropped": {
+        "rx_dropped": {
           "type": "long"
         },
-        "rxErrors": {
+        "rx_errors": {
           "type": "long"
         },
-        "rxPackets": {
+        "rx_packets": {
           "type": "long"
         },
         "service_id": {
@@ -200,10 +131,6 @@
           "type": "keyword"
         },
         "service_name": {
-          "ignore_above": 1024,
-          "type": "keyword"
-        },
-        "service_state": {
           "ignore_above": 1024,
           "type": "keyword"
         },
@@ -222,31 +149,34 @@
         "total": {
           "type": "long"
         },
-        "totalBytes": {
+        "total_bytes": {
           "type": "long"
         },
-        "totalUsage": {
+        "total_usage": {
           "type": "double"
         },
-        "txBytes": {
+        "tx_bytes": {
           "type": "long"
         },
-        "txDropped": {
+        "tx_dropped": {
           "type": "long"
         },
-        "txErrors": {
+        "tx_errors": {
           "type": "long"
         },
-        "txPackets": {
+        "tx_packets": {
           "type": "long"
         },
-        "usageInKernelmode": {
+        "usage": {
+          "type": "long"
+        },
+        "usage_in_kernel_mode": {
           "type": "double"
         },
-        "usageInUsermode": {
+        "usage_in_user_mode": {
           "type": "double"
         },
-        "usage_p": {
+        "usage_pct": {
           "type": "double"
         },
         "write": {
@@ -255,16 +185,10 @@
       }
     }
   },
-  "order": 1,
+  "order": 0,
   "settings": {
-    "index": {
-      "mapping": {
-        "total_fields": {
-          "limit": 10000
-        }
-      }
-    },
+    "index.mapping.total_fields.limit": 10000,
     "index.refresh_interval": "5s"
   },
-  "template": "ampbeat-6.0.0-alpha1-*"
+  "template": "ampbeat-*"
 }

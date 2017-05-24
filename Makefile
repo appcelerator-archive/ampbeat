@@ -24,20 +24,6 @@ copy-vendor:
 	cp -R ${BEAT_GOPATH}/src/github.com/elastic/beats vendor/github.com/elastic/
 	rm -rf vendor/github.com/elastic/beats/.git
 
-.PHONY: create-image
-create-image:
-	rm -f ampbeat
-	docker build -t appcelerator/ampbeat:latest .
-
-.PHONY: create-image-test
-create-image-test:
-		rm -f ampbeat
-		docker build -t appcelerator/ampbeat:test .
-		
-.PHONY: update-deps
-update-deps:
-
-
 .PHONY: git-init
 git-init:
 	git init

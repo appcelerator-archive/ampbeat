@@ -3,8 +3,9 @@ package main
 import (
 	"os"
 
-	"github.com/appcelerator/ampbeat/beater"
 	"github.com/elastic/beats/libbeat/beat"
+
+	"github.com/appcelerator/ampbeat/beater"
 )
 
 func main() {
